@@ -1,5 +1,6 @@
 using ProtoTask.Persistence;
 using ProtoTask.Entity;
+using ProtoTask.GUI;
 
 
 namespace ProtoTask
@@ -15,7 +16,7 @@ namespace ProtoTask
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new FormLogin());
             //new Repository();
 
             //Tarefa t = new Tarefa

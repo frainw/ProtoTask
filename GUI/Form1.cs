@@ -1,21 +1,24 @@
 using ProtoTask.Entity;
 using ProtoTask.Persistence;
+using System.ComponentModel;
 
 namespace ProtoTask
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private static Form1 _instace;
+        private Form1()
         {
             InitializeComponent();
-
-            // carga das tarefas do banc para o check list box
-            //clbTarefas.DataSource = new TarefaRepository().FindAll();
-
-            ReCarregar();
+            Recarregar();
         }
-
-        private void ReCarregar()
+        public static Form1 Instance(){
+            if (_instace == null) { 
+                _instace = new Form1();    
+            }
+            return _instace;
+        }
+        private void Recarregar()
         {
             clbTarefas.Items.Clear();
 
@@ -41,7 +44,7 @@ namespace ProtoTask
 
 
             new TarefaRepository().Save(u);
-            ReCarregar();
+            Recarregar();
             txtPesquisa.Clear();
 
         }
@@ -75,7 +78,7 @@ namespace ProtoTask
             if (radTodas.Checked && radNaoConcluidas.Checked == false)
             {
                 radNaoConcluidas.Checked = false;
-                ReCarregar();
+                Recarregar();
             }
         }
 
@@ -109,7 +112,7 @@ namespace ProtoTask
 
 
                 new TarefaRepository().Save(u);
-                ReCarregar();
+                Recarregar();
 
                 txtPesquisa.Clear();
             }

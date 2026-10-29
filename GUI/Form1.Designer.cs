@@ -35,12 +35,14 @@
             dtpLimite = new DateTimePicker();
             txtPesquisa = new TextBox();
             clbTarefas = new CheckedListBox();
+            label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(radNaoConcluidas);
             panel1.Controls.Add(radTodas);
             panel1.Controls.Add(btnAdicionar);
@@ -96,9 +98,9 @@
             // 
             // txtPesquisa
             // 
-            txtPesquisa.Location = new Point(72, 55);
+            txtPesquisa.Location = new Point(121, 55);
             txtPesquisa.Name = "txtPesquisa";
-            txtPesquisa.Size = new Size(230, 23);
+            txtPesquisa.Size = new Size(197, 23);
             txtPesquisa.TabIndex = 1;
             txtPesquisa.KeyUp += txtPesquisa_KeyUp;
             // 
@@ -110,6 +112,15 @@
             clbTarefas.Size = new Size(443, 292);
             clbTarefas.TabIndex = 0;
             clbTarefas.ItemCheck += clbTarefas_ItemCheck;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(55, 61);
+            label1.Name = "label1";
+            label1.Size = new Size(60, 15);
+            label1.TabIndex = 6;
+            label1.Text = "Pesquisar:";
             // 
             // Form1
             // 
@@ -133,5 +144,6 @@
         private TextBox txtPesquisa;
         private RadioButton radNaoConcluidas;
         private RadioButton radTodas;
+        private Label label1;
     }
 }

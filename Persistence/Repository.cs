@@ -11,6 +11,7 @@ namespace ProtoTask.Persistence
         private string _connectionParams = @"server=127.0.0.1;port=3306;uid=root;pwd=aluno;database=gestaotarefas";
 
         public DbSet<Tarefa> Tarefas { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         public Repository() => Database.EnsureCreated();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
