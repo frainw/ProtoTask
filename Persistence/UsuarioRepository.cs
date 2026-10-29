@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProtoTask.Entity;
-using ProtoTask.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProtoTask
+namespace ProtoTask.Persistence
 {
     internal class UsuarioRepository
     {
