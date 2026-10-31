@@ -7,12 +7,12 @@ namespace ProtoTask.Entity
     public class Tarefa
     {
         public UInt32 Id {  get; set; }
-        public string _descricao;
+        private string descricao;
         public string Descricao 
         { 
             get 
             { 
-                return _descricao; 
+                return descricao; 
             } 
             set 
             {
@@ -20,14 +20,16 @@ namespace ProtoTask.Entity
                 {
                     throw new ArgumentException("Descrição deve ter entre 3 e 100 caracteres");
                 }
-                _descricao = value;
+                descricao = value;
             } 
         }
-        public bool Concluida { get; set; }
+        public Boolean Concluida { get; set; }
         public DateTime Limite { get; set; }
 
-        public override string ToString()
-        {
+        public UInt32 UsuarioAutorId { get; set; }
+
+		public override string ToString() { 
+        
             return $"{Descricao} [" + Limite.ToShortDateString() + "]";
         }
     }

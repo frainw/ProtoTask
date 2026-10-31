@@ -55,12 +55,20 @@ namespace ProtoTask.Persistence
             {
                 using (Repository repository = new())
                 {
-                    return repository.Tarefas.Where(u => u.Concluida == marcado).ToList();
+                    return repository.Tarefas.Where(t => t.Concluida == marcado).ToList();
                 }
             }
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public String[] FindByAuthor(UInt32 Id)
+        {
+            using(Repository repository = new Repository())
+            {
+                return repository.Tarefas.Where(t => t.UsuarioAutorId == Id).Select(t => t.Descricao.ToString()).ToArray();
             }
         }
 

@@ -3,6 +3,7 @@ using ProtoTask.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ProtoTask.Persistence
 {
@@ -16,7 +17,8 @@ namespace ProtoTask.Persistence
                 {
                     if (usuario.Id == 0)
                     {
-                        repository.Usuarios.Add(usuario);
+                        
+						repository.Usuarios.Add(usuario);
                     }
                     else
                     {
@@ -33,18 +35,42 @@ namespace ProtoTask.Persistence
             }
 
         }
-        public Usuario? FindByUsuarioNameAndPassword(Usuario usuario)
-        {
-            try
+        public bool UsuarioExiste(Usuario usuario) {
+            using (Repository repository = new Repository())
             {
-                using (Repository repository = new Repository())
-                {
-                    return repository.Usuarios.Where(u => u.UsuarioName == usuario.UsuarioName && u.Password == usuario.Password).FirstOrDefault();
-                }
-            }
-            catch (Exception) {
-                throw;
+                return repository.Usuarios.Any(u => usuario.UsuarioName == u.UsuarioName);
             }
         }
-    }
+
+        public bool SenhaCorreta(Usuario usuario)
+        {
+            using(Repository repository = new Repository())
+            {
+                Usuario? usuario2 = repository.Usuarios.FirstOrDefault(u => u.UsuarioName == usuario.UsuarioName);
+
+                if(usuario2 == null)
+                {
+                    return false;
+                }
+
+				return usuario.Password == usuario2.Password;
+			}
+        }
+
+		public Usuario? GetUsuario(Usuario usuario)
+        {
+			using (Repository repository = new Repository())
+			{
+                return repository.Usuarios.Where(u => u.UsuarioName == usuario.UsuarioName).FirstOrDefault();
+			}
+		}
+
+		public Usuario? FindbyId(UInt32 Id )
+        {
+            using(Repository repository = new Repository())
+            {
+                return repository.Usuarios.Where(u => u.Id == Id).FirstOrDefault();
+            }
+        }
+	}
 }

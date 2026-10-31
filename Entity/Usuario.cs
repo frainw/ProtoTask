@@ -37,7 +37,7 @@ namespace ProtoTask.Entity
         {
             get
             {
-                return "";
+                return _password;
             }
             set
             {
@@ -49,6 +49,9 @@ namespace ProtoTask.Entity
             }
         }
 
-
-    }
+		public override String ToString()
+		{
+			return $"{Id} \n Usuario: {_usuarioName} \n senha{_password}";
+		}
+	}
 }
