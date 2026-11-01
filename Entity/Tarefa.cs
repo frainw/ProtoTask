@@ -7,8 +7,12 @@ namespace ProtoTask.Entity
     public class Tarefa
     {
         public UInt32 Id {  get; set; }
-        private string descricao;
-        public string Descricao 
+        public String descricao;
+        public Boolean Concluida { get; set; }
+        public DateTime Limite { get; set; }
+        public UInt32 UsuarioAutorId { get; set; }
+		        
+		public String Descricao 
         { 
             get 
             { 
@@ -23,12 +27,7 @@ namespace ProtoTask.Entity
                 descricao = value;
             } 
         }
-        public Boolean Concluida { get; set; }
-        public DateTime Limite { get; set; }
-
-        public UInt32 UsuarioAutorId { get; set; }
-
-		public override string ToString() { 
+		public override String ToString() { 
         
             return $"{Descricao} [" + Limite.ToShortDateString() + "]";
         }
