@@ -65,7 +65,7 @@ namespace ProtoTask.Persistence
 			}
 		}
 
-		public Usuario? FindbyId(UInt32 Id )
+		public Usuario? FindById(UInt32 Id )
         {
             using(Repository repository = new Repository())
             {
